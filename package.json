@@ -1,0 +1,12 @@
+{
+  "name": "learning-jest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/yowlisses/learning-jest",
+  "author": "Ulisses <m.stunik@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jest": "^27.0.4"
+  }
+}
