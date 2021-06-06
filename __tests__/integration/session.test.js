@@ -1,19 +1,25 @@
 const { User } = require('../../src/app/models');
 
+const request = require('supertest');
+const app = require('../../src/app');
+
+const truncate = require('../utils/truncateSync');
+
 describe('Authentication', () => {
-	it('should sum two numbers', async () => {
-		const user = await User.create({
-			name: 'ulisses',
-			email: 'ulisses@nanogigasfsdfd.com',
-			password: '41234',
-		});
+	beforeEach(truncate);
 
-		console.log(user);
-
-		expect(user).toBe({
-			name: 'ulisses',
+	it('should authenticate with valid credentials', async () => {
+		const user = User.create({
+			name: 'Ulisses',
 			email: 'ulisses@nanogiga.com',
-			password: '41234',
+			password: '131231412',
 		});
+
+		const response = await request(app).post('/session').send({
+			email: user.email,
+			password: user.password,
+		});
+
+		expect(response.status).toBe(200);
 	});
 });
